@@ -1,0 +1,11 @@
+msgid "Mar"
+msgstr "Mär"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "Dec"
+msgstr "Dez"

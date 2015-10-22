@@ -1,0 +1,7 @@
+*.gz
+pub/System/PickADateContrib/js/picker.date.js
+pub/System/PickADateContrib/js/picker.time.js
+pub/System/PickADateContrib/js/picker.js
+pub/System/PickADateContrib/css/classic.time.css
+pub/System/PickADateContrib/css/classic.css
+pub/System/PickADateContrib/css/classic.date.css

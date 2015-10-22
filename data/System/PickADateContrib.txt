@@ -1,0 +1,36 @@
+---+ PickADateContrib
+
+%SHORTDESCRIPTION%
+
+---++ Installation
+
+%$INSTALL_INSTRUCTIONS%
+
+---++ Usage
+
+This contrib introduces the formfields =date2= and =time2= which are used to
+render a date or time picker control based on
+[[http://amsul.ca/pickadate.js/][pickadate.js]].
+
+For further documentation and API usage see:
+   * [[http://amsul.ca/pickadate.js/date/][datepicker]]
+   * [[http://amsul.ca/pickadate.js/time/][timepicker]]
+   * [[http://amsul.ca/pickadate.js/api/][api]]
+
+---++ Developer Info
+
+Values for field =date2= are stored as Unix epoch. Values for field =time2= as
+minutes starting from 00:00am.
+
+---++ Info
+<!--
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
+
+|  Author: | Foswiki:Main.SvenMeyer |
+|  Copyright: | &copy; 2015, Modell Aachen GmbH |
+|  License: | GPLv3 ([[http://www.gnu.org/licenses/gpl-3.0.html][GNU General Public License]]) |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
+|  Home: | http://www.modell-aachen.de |
+|  Support: | http://www.modell-aachen.de |
