@@ -49,7 +49,7 @@
     var epoch = $picker.data('epoch');
     if (epoch) {
       epoch = 1000 * parseInt(epoch);
-      $picker.pickadate('picker').set('select', epoch, {muted: true});
+      $picker.pickadate('picker').set('select', epoch);
     }
 
     $picker.closest('form').on('submit', function() {
