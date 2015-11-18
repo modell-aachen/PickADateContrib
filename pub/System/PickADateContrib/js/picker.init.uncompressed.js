@@ -45,6 +45,20 @@
       }
     };
 
+    var dmin = $picker.data('min');
+    if (/^true$/i.test(dmin)) {
+      opts.min = true;
+    } else if (/^-?\d+$/.test(dmin)) {
+      opts.min = parseInt(dmin);
+    }
+
+    var dmax = $picker.data('max');
+    if (/^true$/i.test(dmax)) {
+      opts.max = true;
+    } else if (/^-?\d+$/.test(dmax)) {
+      opts.max = parseInt(dmax);
+    }
+
     $picker.pickadate(opts);
     var epoch = $picker.data('epoch');
     if (epoch) {

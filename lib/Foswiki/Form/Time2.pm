@@ -28,27 +28,7 @@ sub new {
 
 sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
-
-  my $debug = $Foswiki::cfg{PickADateContrib}{Debug} || 0;
-  my $suffix = $debug ? '.uncompressed' : '';
-
-  my $pluginURL = '%PUBURLPATH%/%SYSTEMWEB%/PickADateContrib';
-  my $styles = <<STYLES;
-<link rel="stylesheet" type="text/css" media="all" href="$pluginURL/css/classic$suffix.css" />
-<link rel="stylesheet" type="text/css" media="all" href="$pluginURL/css/classic.time$suffix.css" />
-STYLES
-  Foswiki::Func::addToZone( 'head', 'PICKADATECONTRIB::TIME2::STYLES', $styles);
-
-  my $scripts = <<SCRIPTS;
-<script type="text/javascript" src="$pluginURL/js/picker$suffix.js"></script>
-<script type="text/javascript" src="$pluginURL/js/picker.time$suffix.js"></script>
-<script type="text/javascript" src="$pluginURL/js/picker.init$suffix.js"></script>
-SCRIPTS
-
-  Foswiki::Plugins::JQueryPlugin::createPlugin("jqp::observe");
-  my $lang = $topicObject->expandMacros('%LANGUAGE%');
-  $scripts .= "<script type=\"text/javascript\" src=\"$pluginURL/js/i18n/$lang.js\"></script>" if $lang =~ /^(de|fr)$/;
-  Foswiki::Func::addToZone( 'script', 'PICKADATECONTRIB::TIME2::SCRIPTS', $scripts, 'JQUERYPLUGIN::JQP::OBSERVE, FOSWIKI::PREFERENCES' );
+  Foswiki::Contrib::PickADateContrib::initTimePicker($topicObject);
 
   my $size = $this->{size} . "em";
   my $name = $this->{name};
