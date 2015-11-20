@@ -37,10 +37,6 @@ while ( my ($k, $v) = each %$this ) {
     $this->{value} = $val;
   }
 
-  while ( my ($k, $v) = each %$this ) {
-    Foswiki::Func::writeWarning("$k -> $v");
-  }
-
   return $this;
 }
 
