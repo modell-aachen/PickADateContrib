@@ -3,8 +3,9 @@ package Foswiki::Form::Date2;
 use strict;
 use warnings;
 
-use Foswiki::Plugins::JQueryPlugin;
+use Foswiki::Contrib::PickADateContrib;
 use Foswiki::Form::FieldDefinition;
+use Foswiki::Plugins::JQueryPlugin;
 our @ISA = ('Foswiki::Form::FieldDefinition');
 
 BEGIN {
@@ -17,38 +18,31 @@ BEGIN {
 sub new {
   my $class = shift;
   my $this = $class->SUPER::new(@_);
-
+while ( my ($k, $v) = each %$this ) {
+  Foswiki::Func::writeWarning( "$k -> $v" );
+}
   my $size = $this->{size} || '';
   $size =~ s/\D//g;
   $size = 10 if (!$size || $size < 1);
   $this->{size} = $size;
+
+  if($this->{value} =~ /,/ || $this->{value} =~ /=/) {
+    my $val;
+    foreach my $e (split(/,/, $this->{value})){
+      $this->{min} = $1 if $e =~ /^\s*min\s*=\s*(\d+|true)\s*$/;
+      $this->{max} = $1 if $e =~ /^\s*min\s*=\s*(\d+|true)\s*$/;
+      $val = $e unless $e =~ /^\s*(min|max)/;
+    }
+
+    $this->{value} = $val;
+  }
 
   return $this;
 }
 
 sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
-
-  my $debug = $Foswiki::cfg{PickADateContrib}{Debug} || 0;
-  my $suffix = $debug ? '.uncompressed' : '';
-
-  my $pluginURL = '%PUBURLPATH%/%SYSTEMWEB%/PickADateContrib';
-  my $styles = <<STYLES;
-<link rel="stylesheet" type="text/css" media="all" href="$pluginURL/css/classic$suffix.css" />
-<link rel="stylesheet" type="text/css" media="all" href="$pluginURL/css/classic.date$suffix.css" />
-STYLES
-  Foswiki::Func::addToZone('head', 'PICKADATECONTRIB::DATE2::STYLES', $styles);
-
-  my $scripts = <<SCRIPTS;
-<script type="text/javascript" src="$pluginURL/js/picker$suffix.js"></script>
-<script type="text/javascript" src="$pluginURL/js/picker.date$suffix.js"></script>
-<script type="text/javascript" src="$pluginURL/js/picker.init$suffix.js"></script>
-SCRIPTS
-
-  Foswiki::Plugins::JQueryPlugin::createPlugin("jqp::observe");
-  my $lang = $topicObject->expandMacros('%LANGUAGE%');
-  $scripts .= "<script type=\"text/javascript\" src=\"$pluginURL/js/i18n/$lang.js\"></script>" if $lang =~ /^(de|fr)$/;
-  Foswiki::Func::addToZone( 'script', 'PICKADATECONTRIB::DATE2::SCRIPTS', $scripts, 'JQUERYPLUGIN::JQP::OBSERVE, FOSWIKI::PREFERENCES' );
+  Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject);
 
   my $size = $this->{size} . "em";
   my $name = $this->{name};
