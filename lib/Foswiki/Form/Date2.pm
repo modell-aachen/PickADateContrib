@@ -18,9 +18,7 @@ BEGIN {
 sub new {
   my $class = shift;
   my $this = $class->SUPER::new(@_);
-while ( my ($k, $v) = each %$this ) {
-  Foswiki::Func::writeWarning( "$k -> $v" );
-}
+
   my $size = $this->{size} || '';
   $size =~ s/\D//g;
   $size = 10 if (!$size || $size < 1);
