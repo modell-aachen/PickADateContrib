@@ -51,7 +51,7 @@ sub renderForEdit {
   $format =~ s/\$mo/mm/;
 
   my $input = <<INPUT;
-  <input type="text" data-format="$format" data-epoch="$value" name="$name" class="foswikiInputField foswikiPickADate" style="width: $size">
+  <input type="text" data-format="$format" data-epoch="$value" name="$name" class="foswikiInputField foswikiPickADate" style="width: $size" />
 INPUT
 
   return ('', $input);
