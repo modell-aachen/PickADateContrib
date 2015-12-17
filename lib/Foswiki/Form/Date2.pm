@@ -5,7 +5,6 @@ use warnings;
 
 use Foswiki::Contrib::PickADateContrib;
 use Foswiki::Form::FieldDefinition;
-use Foswiki::Plugins::JQueryPlugin;
 our @ISA = ('Foswiki::Form::FieldDefinition');
 
 BEGIN {

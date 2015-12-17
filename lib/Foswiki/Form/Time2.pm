@@ -3,7 +3,6 @@ package Foswiki::Form::Time2;
 use strict;
 use warnings;
 
-use Foswiki::Plugins::JQueryPlugin ();
 use Foswiki::Form::FieldDefinition ();
 use Foswiki::Contrib::PickADateContrib;
 our @ISA = ('Foswiki::Form::FieldDefinition');
