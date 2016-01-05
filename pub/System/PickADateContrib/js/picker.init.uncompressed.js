@@ -111,20 +111,12 @@
   };
 
   $(document).ready( function() {
-    // initialize and observe the datepicker...
-    $('.foswikiPickADate').each(initDatePicker);
-    $('body,html').observe('childlist', '.foswikiPickADate', function(r) {
-      for (var i = 0; i < r.addedNodes.length; ++i) {
-        $(r.addedNodes[i]).find('.foswikiPickADate').each(initDatePicker);
-      }
+    $('.foswikiPickADate').livequery(function() {
+      initDatePicker.call(this);
     });
 
-    // same for the timepickers...
-    $('.foswikiPickATime').each(initTimePicker);
-    $('body,html').observe('childlist', '.foswikiPickATime', function(r) {
-      for (var i = 0; i < r.addedNodes.length; ++i) {
-        $(r.addedNodes[i]).find('.foswikiPickATime').each(initTimePicker);
-      }
+    $('.foswikiPickATime').livequery(function() {
+      initDatePicker.call(this);
     });
   });
 })(jQuery);

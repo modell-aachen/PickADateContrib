@@ -45,10 +45,10 @@ STYLES
 <script type="text/javascript" src="$pluginURL/js/picker.init$suffix.js"></script>
 SCRIPTS
 
-  Foswiki::Plugins::JQueryPlugin::createPlugin("jqp::observe");
+  Foswiki::Plugins::JQueryPlugin::createPlugin("livequery");
   my $lang = $meta->expandMacros('%LANGUAGE%');
   $scripts .= "<script type=\"text/javascript\" src=\"$pluginURL/js/i18n/$lang.js\"></script>" if $lang =~ /^(de|fr)$/;
-  Foswiki::Func::addToZone( 'script', "PICKADATECONTRIB::\U$picker\E2::SCRIPTS", $scripts, 'JQUERYPLUGIN::JQP::OBSERVE, FOSWIKI::PREFERENCES' );
+  Foswiki::Func::addToZone( 'script', "PICKADATECONTRIB::\U$picker\E2::SCRIPTS", $scripts, 'JQUERYPLUGIN::LIVEQUERY, FOSWIKI::PREFERENCES' );
 }
 
 1;

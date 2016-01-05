@@ -3,8 +3,8 @@ package Foswiki::Form::Time2;
 use strict;
 use warnings;
 
-use Foswiki::Plugins::JQueryPlugin ();
 use Foswiki::Form::FieldDefinition ();
+use Foswiki::Contrib::PickADateContrib;
 our @ISA = ('Foswiki::Form::FieldDefinition');
 
 BEGIN {
@@ -30,13 +30,13 @@ sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
   Foswiki::Contrib::PickADateContrib::initTimePicker($topicObject);
 
-  my $size = $this->{size} . "em";
+  my $size = $this->{size};
   my $name = $this->{name};
   my $tf = $Foswiki::cfg{PickADateContrib}{TimeFormat} || '24';
   my $format = $tf =~ /24/ ? 'HH:i' : 'hh:i a';
 
   my $input = <<INPUT;
-<input type="text" data-format="$format" data-value="$value" data-minutes="$value" name="$name" class="foswikiInputField foswikiPickATime" style="width: $size">
+<input type="text" data-format="$format" data-value="$value" data-minutes="$value" name="$name" class="foswikiInputField foswikiPickATime" size="$size" />
 INPUT
 
   return ('', $input);

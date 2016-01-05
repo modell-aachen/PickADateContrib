@@ -5,7 +5,6 @@ use warnings;
 
 use Foswiki::Contrib::PickADateContrib;
 use Foswiki::Form::FieldDefinition;
-use Foswiki::Plugins::JQueryPlugin;
 our @ISA = ('Foswiki::Form::FieldDefinition');
 
 BEGIN {
@@ -18,9 +17,7 @@ BEGIN {
 sub new {
   my $class = shift;
   my $this = $class->SUPER::new(@_);
-while ( my ($k, $v) = each %$this ) {
-  Foswiki::Func::writeWarning( "$k -> $v" );
-}
+
   my $size = $this->{size} || '';
   $size =~ s/\D//g;
   $size = 10 if (!$size || $size < 1);
@@ -53,7 +50,7 @@ sub renderForEdit {
   $format =~ s/\$mo/mm/;
 
   my $input = <<INPUT;
-  <input type="text" data-format="$format" data-epoch="$value" name="$name" class="foswikiInputField foswikiPickADate" style="width: $size">
+  <input type="text" data-format="$format" data-epoch="$value" name="$name" class="foswikiInputField foswikiPickADate" style="width: $size" />
 INPUT
 
   return ('', $input);
