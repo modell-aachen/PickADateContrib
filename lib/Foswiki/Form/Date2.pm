@@ -37,6 +37,16 @@ sub new {
   return $this;
 }
 
+sub getDisplayValue {
+  my ($this, $value) = @_;
+  my $format = $Foswiki::cfg{DefaultDateFormat};
+  $value = Foswiki::Time::formatTime($value, $format);
+  if ($format =~ /month/) {
+    $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
+  }
+  $value;
+}
+
 sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
   Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject);
