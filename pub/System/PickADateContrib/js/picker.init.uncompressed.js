@@ -116,7 +116,7 @@
     });
 
     $('.foswikiPickATime').livequery(function() {
-      initDatePicker.call(this);
+      initTimePicker.call(this);
     });
   });
 })(jQuery);
