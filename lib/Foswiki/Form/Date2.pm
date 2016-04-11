@@ -39,8 +39,10 @@ sub new {
 
 sub getDisplayValue {
   my ($this, $value) = @_;
+  return '' if $value =~ /^\s*$/;
+
   my $format = $Foswiki::cfg{DefaultDateFormat};
-  $value = Foswiki::Time::formatTime($value, $format);
+  $value = Foswiki::Time::formatTime($value, $format, 'servertime');
   if ($format =~ /month/) {
     $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
   }
@@ -68,9 +70,11 @@ INPUT
 
 sub renderForDisplay {
     my ( $this, $format, $value, $attrs ) = @_;
+    return '' if $value =~ /^\s*$/;
+
     if ($value =~ /^\d+$/) {
       my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
-      $value = Foswiki::Time::formatTime($value, $format);
+      $value = Foswiki::Time::formatTime($value, $format, 'servertime');
       if ($format =~ /month/) {
         $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
       }

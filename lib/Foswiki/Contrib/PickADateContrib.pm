@@ -46,6 +46,8 @@ STYLES
 SCRIPTS
 
   Foswiki::Plugins::JQueryPlugin::createPlugin("livequery");
+  Foswiki::Plugins::JQueryPlugin::createPlugin("jqp::moment");
+
   my $lang = $meta->expandMacros('%LANGUAGE%');
   $scripts .= "<script type=\"text/javascript\" src=\"$pluginURL/js/i18n/$lang.js\"></script>" if $lang =~ /^(de|fr)$/;
   Foswiki::Func::addToZone( 'script', "PICKADATECONTRIB::\U$picker\E2::SCRIPTS", $scripts, 'JQUERYPLUGIN::LIVEQUERY, FOSWIKI::PREFERENCES' );
