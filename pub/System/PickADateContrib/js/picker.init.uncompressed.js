@@ -40,7 +40,16 @@
           return;
         }
 
-        var epoch = ctx.select/1000;
+        var epoch = ctx.select;
+        if (epoch) {
+          if (typeof moment === 'function') {
+            var m = moment(epoch);
+            epoch = m.utc().unix();
+          } else {
+            epoch = epoch/1000;
+          }
+        }
+
         $hidden.val(epoch);
       }
     };

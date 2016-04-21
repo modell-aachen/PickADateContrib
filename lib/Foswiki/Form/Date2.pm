@@ -39,8 +39,10 @@ sub new {
 
 sub getDisplayValue {
   my ($this, $value) = @_;
+  return '' if $value =~ /^\s*$/;
+
   my $format = $Foswiki::cfg{DefaultDateFormat};
-  $value = Foswiki::Time::formatTime($value, $format);
+  $value = Foswiki::Time::formatTime($value, $format, 'servertime');
   if ($format =~ /month/) {
     $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
   }
@@ -60,7 +62,7 @@ sub renderForEdit {
   $format =~ s/\$mo/mm/;
 
   my $input = <<INPUT;
-  <input type="text" data-format="$format" data-epoch="$value" name="$name" class="foswikiInputField foswikiPickADate" style="width: $size" />
+  <input type="text" data-format="$format" data-epoch="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickADate" style="width: $size" />
 INPUT
 
   return ('', $input);
@@ -68,9 +70,11 @@ INPUT
 
 sub renderForDisplay {
     my ( $this, $format, $value, $attrs ) = @_;
+    return '' if $value =~ /^\s*$/;
+
     if ($value =~ /^\d+$/) {
       my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
-      $value = Foswiki::Time::formatTime($value, $format);
+      $value = Foswiki::Time::formatTime($value, $format, 'servertime');
       if ($format =~ /month/) {
         $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
       }
