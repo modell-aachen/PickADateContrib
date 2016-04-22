@@ -41,6 +41,7 @@ sub getDisplayValue {
   my ($this, $value) = @_;
   return '' if $value =~ /^\s*$/;
 
+  $value = _convertDate($value);
   my $format = $Foswiki::cfg{DefaultDateFormat};
   $value = Foswiki::Time::formatTime($value, $format, 'servertime');
   if ($format =~ /month/) {
@@ -53,6 +54,7 @@ sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
   Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject);
 
+  $value = _convertDate($value);
   my $size = $this->{size} . "em";
   my $name = $this->{name};
   my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
@@ -72,6 +74,7 @@ sub renderForDisplay {
     my ( $this, $format, $value, $attrs ) = @_;
     return '' if $value =~ /^\s*$/;
 
+    $value = _convertDate($value);
     if ($value =~ /^\d+$/) {
       my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
       $value = Foswiki::Time::formatTime($value, $format, 'servertime');
@@ -81,6 +84,14 @@ sub renderForDisplay {
     }
 
     return $this->SUPER::renderForDisplay($format, $value, $attrs)
+}
+
+sub _convertDate {
+  my $date = shift;
+  if ($date =~ /\d{1,2}\s\w{3}\s\d{4}/) {
+    $date = Foswiki::Time::parseTime($date);
+  }
+  $date;
 }
 
 1;
