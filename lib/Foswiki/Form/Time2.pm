@@ -44,24 +44,29 @@ INPUT
 
 sub renderForDisplay {
   my ( $this, $format, $value, $attrs ) = @_;
-  my $tf = $Foswiki::cfg{PickADateContrib}{TimeFormat} || '24';
 
-  my $h = int($value/60);
-  $h = '0' . $h if $h < 10;
-  my $m = $value%60;
-  $m = '0' . $m if $m < 10;
+  # Note:
+  # Not really fail-safe but let's treat a digits only value
+  # as valid timestamp
+  if ($value =~ /^\d+$/) {
+    my $tf = $Foswiki::cfg{PickADateContrib}{TimeFormat} || '24';
+    my $h = int($value/60);
+    $h = '0' . $h if $h < 10;
+    my $m = $value%60;
+    $m = '0' . $m if $m < 10;
 
-  if ($tf =~ /24/) {
-    $value = "$h:$m";
-  } else {
-    my $pm = 0;
-    if (int($h) > 12) {
-      $pm = 1;
-      $h = int($h) - 12;
-      $h = '0' . $h if $h < 10;
+    if ($tf =~ /24/) {
+      $value = "$h:$m";
+    } else {
+      my $pm = 0;
+      if (int($h) > 12) {
+        $pm = 1;
+        $h = int($h) - 12;
+        $h = '0' . $h if $h < 10;
+      }
+
+      $value = "$h:$m " . ($pm ? 'p.m.' : 'a.m.');
     }
-
-    $value = "$h:$m " . ($pm ? 'p.m.' : 'a.m.');
   }
 
   return $this->SUPER::renderForDisplay( $format, $value, $attrs );
