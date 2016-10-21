@@ -27,13 +27,13 @@
       selectMonths: true,
       selectYears: true,
       onClose: function() {
-        var $hidden = $('input[name="' + name + '"]');
+        var $hidden = $picker.parent().find('input[name="' + name + '"]');
         if (!/^\d+$/.test($hidden.val())) {
           $hidden.val($(this.$node[0]).data('epoch'));
         }
       },
       onSet: function(ctx) {
-        var $hidden = $('input[name="' + name + '"]');
+        var $hidden = $picker.parent().find('input[name="' + name + '"]');
         if (ctx.clear === null) {
           $(this.$node[0]).data('epoch', '');
         } else if (typeof ctx.select !== typeof 0) {
@@ -76,7 +76,7 @@
     }
 
     $picker.closest('form').on('submit', function() {
-      var $hidden = $('input[name="' + name + '"]');
+      var $hidden = $picker.parent().find('input[name="' + name + '"]');
       if (!/^\d+$/.test($hidden.val())) {
         $hidden.val($picker.data('epoch'));
       }
@@ -93,13 +93,13 @@
       formatSubmit: format,
       hiddenName: true,
       onClose: function() {
-        var $hidden = $('input[name="' + name + '"]');
+        var $hidden = $picker.parent().find('input[name="' + name + '"]');
         if (!/^\d+$/.test($hidden.val())) {
           $hidden.val($(this.$node[0]).data('minutes'));
         }
       },
       onSet: function(ctx) {
-        var $hidden = $('input[name="' + name + '"]');
+        var $hidden = $picker.parent().find('input[name="' + name + '"]');
         if (ctx.clear === null) {
           $(this.$node[0]).data('minutes', '');
         } else if (typeof ctx.select !== typeof 0) {
@@ -112,7 +112,7 @@
 
     $picker.pickatime(opts);
     $picker.closest('form').on('submit', function() {
-      var $hidden = $('input[name="' + name + '"]');
+      var $hidden = $picker.parent().find('input[name="' + name + '"]');
       if (!/^\d+$/.test($hidden.val())) {
         $hidden.val($picker.data('minutes'));
       }
