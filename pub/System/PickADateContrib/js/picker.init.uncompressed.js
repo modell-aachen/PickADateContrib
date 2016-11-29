@@ -81,6 +81,10 @@
         $hidden.val($picker.data('epoch'));
       }
     });
+
+    if($picker.hasClass('foswikiMandatory')) {
+      $picker.parent().find('input[name="' + name + '"]').addClass('foswikiMandatory');
+    }
   };
 
   var initTimePicker = function() {
