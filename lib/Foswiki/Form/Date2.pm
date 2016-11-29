@@ -90,7 +90,7 @@ sub renderForDisplay {
 
 sub _convertDate {
   my $date = shift;
-  if ($date =~ /\d{1,2}\s\w{3}\s\d{4}/) {
+  if ($date =~ /\d{1,2}\s\w{3}\s\d{4}/ || $date =~ /^\d{4}-\d{2}-\d{2}/) {
     $date = Foswiki::Time::parseTime($date);
   }
   $date;
