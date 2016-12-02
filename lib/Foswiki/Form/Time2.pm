@@ -35,8 +35,10 @@ sub renderForEdit {
   my $tf = $Foswiki::cfg{PickADateContrib}{TimeFormat} || '24';
   my $format = $tf =~ /24/ ? 'HH:i' : 'hh:i a';
 
+  my $mandatoryMarker = ($this->isMandatory()) ? ' foswikiMandatory' : '';
+
   my $input = <<INPUT;
-<input type="text" data-format="$format" data-value="$value" data-minutes="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickATime" size="$size" />
+<input type="text" data-format="$format" data-value="$value" data-minutes="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickATime$mandatoryMarker" size="$size" />
 INPUT
 
   return ('', $input);

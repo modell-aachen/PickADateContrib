@@ -63,8 +63,10 @@ sub renderForEdit {
   $format =~ s/\$month/mmm/;
   $format =~ s/\$mo/mm/;
 
+  my $mandatoryMarker = ($this->isMandatory()) ? ' foswikiMandatory' : '';
+
   my $input = <<INPUT;
-  <input type="text" data-format="$format" data-epoch="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickADate" style="width: $size" />
+  <input type="text" data-format="$format" data-epoch="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickADate$mandatoryMarker" style="width: $size" />
 INPUT
 
   return ('', $input);
@@ -88,7 +90,7 @@ sub renderForDisplay {
 
 sub _convertDate {
   my $date = shift;
-  if ($date =~ /\d{1,2}\s\w{3}\s\d{4}/) {
+  if ($date =~ /\d{1,2}\s\w{3}\s\d{4}/ || $date =~ /^\d{4}-\d{2}-\d{2}/) {
     $date = Foswiki::Time::parseTime($date);
   }
   $date;
