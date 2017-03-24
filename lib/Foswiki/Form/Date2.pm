@@ -74,7 +74,7 @@ INPUT
 
 sub renderForDisplay {
     my ( $this, $format, $value, $attrs ) = @_;
-    return '' if $value =~ /^\s*$/;
+    return $this->SUPER::renderForDisplay($format, $value, $attrs) if $value =~ /^\s*$/;
 
     $value = _convertDate($value);
     if ($value =~ /^\d+$/) {
@@ -85,7 +85,7 @@ sub renderForDisplay {
       }
     }
 
-    return $this->SUPER::renderForDisplay($format, $value, $attrs)
+    return $this->SUPER::renderForDisplay($format, $value, $attrs);
 }
 
 sub _convertDate {
