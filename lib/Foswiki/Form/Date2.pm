@@ -20,8 +20,11 @@ sub new {
 
   my $size = $this->{size} || '';
   $size =~ s/\D//g;
-  $size = 10 if (!$size || $size < 1);
-  $this->{size} = $size;
+  if (!$size || $size < 1) {
+    $this->{size} = "100%";
+  } else {
+    $this->{size} = $size . "em";
+  }
 
   if($this->{value} =~ /,/ || $this->{value} =~ /=/) {
     my $val;
@@ -50,12 +53,22 @@ sub getDisplayValue {
   $value;
 }
 
+sub _getSkin {
+  my ($this) = @_;
+  my $attributes = $this->{attributes};
+  if($attributes =~ /skin="(.*)"/) {
+    return $1;
+  }
+  return;
+}
+
 sub renderForEdit {
   my ($this, $topicObject, $value) = @_;
-  Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject);
+  my $skin = $this->_getSkin();
+  Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject, $skin);
 
   $value = _convertDate($value);
-  my $size = $this->{size} . "em";
+  my $size = $this->{size};
   my $name = $this->{name};
   my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
   $format =~ s/\$year/yyyy/;
@@ -68,6 +81,14 @@ sub renderForEdit {
   my $input = <<INPUT;
   <input type="text" data-format="$format" data-epoch="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickADate$mandatoryMarker" style="width: $size" />
 INPUT
+  if($skin eq 'flat') {
+    $input = <<INPUT;
+      <div class="ma-input-group">
+        $input
+        <i class="far fa-calendar" aria-hidden="true"></i>
+      </div>
+INPUT
+  }
 
   return ('', $input);
 }
