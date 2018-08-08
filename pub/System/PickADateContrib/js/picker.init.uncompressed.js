@@ -84,6 +84,7 @@
     });
 
     if($picker.hasClass('foswikiMandatory')) {
+      $picker.removeClass('foswikiMandatory');
       $picker.parent().find('input[name="' + name + '"]').addClass('foswikiMandatory');
     }
   };
