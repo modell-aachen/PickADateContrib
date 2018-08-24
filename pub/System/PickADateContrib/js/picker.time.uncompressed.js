@@ -7,7 +7,7 @@
 
     // AMD.
     if ( typeof define == 'function' && define.amd )
-        define( ['picker', 'jquery'], factory )
+        define( ['./picker', 'jquery'], factory )
 
     // Node.js/browserify.
     else if ( typeof exports == 'object' )
@@ -976,6 +976,9 @@ TimePicker.defaults = (function( prefix ) {
         // Picker close behavior
         closeOnSelect: true,
         closeOnClear: true,
+
+        // Update input value on select/clear
+        updateInput: true,
 
         // Classes
         klass: {
