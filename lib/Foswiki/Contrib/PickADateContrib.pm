@@ -30,7 +30,7 @@ sub _addToZone {
   my $meta = shift || _getMeta();
   my $picker = shift;
   my $skin = shift;
-  if ($skin ne 'flat') {
+  if (!$skin || $skin ne 'flat') {
         $skin = '';
   } else {
         $skin = ".$skin";
