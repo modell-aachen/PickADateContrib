@@ -81,7 +81,7 @@ sub renderForEdit {
   my $input = <<INPUT;
   <input type="text" data-format="$format" data-epoch="$value" name="$name" data-name="$name" class="foswikiInputField foswikiPickADate$mandatoryMarker" style="width: $size" />
 INPUT
-  if($skin eq 'flat') {
+  if(defined $skin && $skin eq 'flat') {
     $input = <<INPUT;
       <div class="ma-input-group">
         $input
