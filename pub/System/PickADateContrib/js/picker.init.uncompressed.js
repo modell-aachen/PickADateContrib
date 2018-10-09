@@ -26,6 +26,7 @@
       hiddenName: true,
       selectMonths: true,
       selectYears: true,
+      editable: true,
       onClose: function() {
         var $hidden = $picker.parent().find('input[name="' + name + '"]');
         if (!/^\d+$/.test($hidden.val())) {
@@ -83,6 +84,7 @@
     });
 
     if($picker.hasClass('foswikiMandatory')) {
+      $picker.removeClass('foswikiMandatory');
       $picker.parent().find('input[name="' + name + '"]').addClass('foswikiMandatory');
     }
   };
