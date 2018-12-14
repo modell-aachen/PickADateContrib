@@ -6,11 +6,15 @@ lib/Foswiki/Form/Time2.pm 0444
 locale/PickADateContrib/de.po 0644
 locale/PickADateContrib/fr.po 0644
 pub/System/PickADateContrib/css/classic.date.uncompressed.css 0644
+pub/System/PickADateContrib/css/classic.date.flat.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.time.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.uncompressed.css 0644
+pub/System/PickADateContrib/css/classic.flat.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.date.css 0644
+pub/System/PickADateContrib/css/classic.date.flat.css 0644
 pub/System/PickADateContrib/css/classic.time.css 0644
 pub/System/PickADateContrib/css/classic.css 0644
+pub/System/PickADateContrib/css/classic.flat.css 0644
 pub/System/PickADateContrib/js/i18n/de.js 0644
 pub/System/PickADateContrib/js/i18n/fr.js 0644
 pub/System/PickADateContrib/js/i18n/src/ar.js 0644

@@ -344,18 +344,13 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                 // If we need to give focus, do it before changing states.
                 if ( giveFocus ) {
-                    if ( SETTINGS.editable ) {
-                        ELEMENT.focus()
-                    }
-                    else {
-                        // ....ah yes! It would’ve been incomplete without a crazy workaround for IE :|
-                        // The focus is triggered *after* the close has completed - causing it
-                        // to open again. So unbind and rebind the event at the next tick.
-                        P.$holder.off( 'focus.toOpen' ).focus()
-                        setTimeout( function() {
-                            P.$holder.on( 'focus.toOpen', handleFocusToOpenEvent )
-                        }, 0 )
-                    }
+                    // ....ah yes! It would’ve been incomplete without a crazy workaround for IE :|
+                    // The focus is triggered *after* the close has completed - causing it
+                    // to open again. So unbind and rebind the event at the next tick.
+                    P.$holder.off( 'focus.toOpen' ).focus()
+                    setTimeout( function() {
+                        P.$holder.on( 'focus.toOpen', handleFocusToOpenEvent )
+                    }, 0 )
                 }
 
                 // Remove the “active” class.
