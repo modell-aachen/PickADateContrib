@@ -369,3 +369,31 @@
 .picker__button--today[disabled]:before {
   border-top-color: #aaaaaa;
 }
+
+.flatskin-wrapped
+.ma-date-container {
+  position: relative;
+}
+
+.flatskin-wrapped
+.ma-date-container
+.fa,
+.flatskin-wrapped
+.ma-date-container
+.fas,
+.flatskin-wrapped
+.ma-date-container
+.far,
+.flatskin-wrapped
+.ma-date-container
+.fal {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #b0c0c4;
+  font-size: 1.45em;
+  height: 40px;
+  padding: 10px 8px;
+}
+
