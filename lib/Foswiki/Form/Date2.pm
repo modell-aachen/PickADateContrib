@@ -83,7 +83,7 @@ sub renderForEdit {
 INPUT
   if(defined $skin && $skin eq 'flat') {
     $input = <<INPUT;
-      <div class="ma-input-group">
+      <div class="ma-date-container">
         $input
         <i class="far fa-calendar" aria-hidden="true"></i>
       </div>
