@@ -67,9 +67,9 @@ sub renderForEdit {
   my $skin = $this->_getSkin();
   Foswiki::Contrib::PickADateContrib::initDatePicker($topicObject, $skin);
 
-  $value = _convertDate($value);
-  my $size = $this->{size};
-  my $name = $this->{name};
+  $value = Foswiki::Func::encode(_convertDate($value));
+  my $size = Foswiki::Func::encode($this->{size} . "em");
+  my $name = Foswiki::Func::encode($this->{name});
   my $format = $Foswiki::cfg{DefaultDateFormat} || '$day $month $year';
   $format =~ s/\$year/yyyy/;
   $format =~ s/\$day/dd/;
