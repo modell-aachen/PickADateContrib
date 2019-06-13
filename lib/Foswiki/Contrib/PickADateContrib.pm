@@ -17,6 +17,10 @@ sub initDatePicker {
   _addToZone(shift, 'date', $skin);
 }
 
+sub initTimePicker {
+  _addToZone(shift, 'time');
+}
+
 sub _getMeta {
   my $session = $Foswiki::Plugins::SESSION;
   Foswiki::Meta->new($session, $session->{webName}, $session->{topicName})
