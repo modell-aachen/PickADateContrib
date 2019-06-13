@@ -6,10 +6,12 @@ locale/PickADateContrib/de.po 0644
 locale/PickADateContrib/fr.po 0644
 pub/System/PickADateContrib/css/classic.date.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.date.flat.uncompressed.css 0644
+pub/System/PickADateContrib/css/classic.time.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.flat.uncompressed.css 0644
 pub/System/PickADateContrib/css/classic.date.css 0644
 pub/System/PickADateContrib/css/classic.date.flat.css 0644
+pub/System/PickADateContrib/css/classic.time.css 0644
 pub/System/PickADateContrib/css/classic.css 0644
 pub/System/PickADateContrib/css/classic.flat.css 0644
 pub/System/PickADateContrib/js/i18n/de.js 0644
@@ -60,7 +62,9 @@ pub/System/PickADateContrib/js/i18n/src/zh_CN.js 0644
 pub/System/PickADateContrib/js/i18n/src/zh_TW.js 0644
 pub/System/PickADateContrib/js/picker.date.uncompressed.js 0644
 pub/System/PickADateContrib/js/picker.init.uncompressed.js 0644
+pub/System/PickADateContrib/js/picker.time.uncompressed.js 0644
 pub/System/PickADateContrib/js/picker.uncompressed.js 0644
 pub/System/PickADateContrib/js/picker.date.js 0644
 pub/System/PickADateContrib/js/picker.init.js 0644
+pub/System/PickADateContrib/js/picker.time.js 0644
 pub/System/PickADateContrib/js/picker.js 0644
