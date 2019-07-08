@@ -2,7 +2,6 @@ data/System/PickADateContrib.txt 0644
 lib/Foswiki/Contrib/PickADateContrib.pm 0444
 lib/Foswiki/Contrib/PickADateContrib/Config.spec 0644
 lib/Foswiki/Form/Date2.pm 0444
-lib/Foswiki/Form/Time2.pm 0444
 locale/PickADateContrib/de.po 0644
 locale/PickADateContrib/fr.po 0644
 pub/System/PickADateContrib/css/classic.date.uncompressed.css 0644
