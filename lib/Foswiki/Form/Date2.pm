@@ -48,7 +48,7 @@ sub getDisplayValue {
   my $format = $Foswiki::cfg{DefaultDateFormat};
   $value = Foswiki::Time::formatTime($value, $format, 'servertime');
   if ($format =~ /month/) {
-    $value =~ s/(?<=\s)([^\s]+)(?!=\s)/%MAKETEXT{$1}%/;
+    $value =~ s/(?<=\s)([^\s]+)(?!=\s)/$this->{session}->i18n->maketext($1)/e;
   }
   $value;
 }
